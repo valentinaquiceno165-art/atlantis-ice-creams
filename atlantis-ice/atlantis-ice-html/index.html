@@ -5,137 +5,150 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Atlantis' Ice Creams</title>
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Offside&family=Quicksand:wght@300..700&display=swap"
+    rel="stylesheet">
 </head>
 
-<body>
-  <header>
 
-    <div class="logo">
-      <img src="./assets/img/font-atlantis-ice-creams.jpeg" alt="logo">
-    </div>
-    <nav>
+<body>
+  <header class="nav-barra">
+    <nav class="navegacion">
+      <a href="#inicio" class="logo">Atlantis' Ice Creams</a>
       <ul>
         <li>
-          <a href="#inicio">Inicio</a>
+          <a class="nav-enlace" href="#inicio">Inicio</a>
+        </li>
+        
+        <li>
+          <a class="nav-enlace" href="#catalogo">Catálogo</a>
         </li>
         <li>
-          <a href="#catalogo">Catálogo</a>
+          <a class="sobre-nosotros" href="sobre-nosotros">Sobre Nosotros</a>
         </li>
-
         <li>
-          <a href="#contacto">Contacto</a>
+          <a class="nav-enlace" href="#contacto">Contacto</a>
         </li>
       </ul>
     </nav>
-
   </header>
 
+
   <main>
-    <section id="inicio">
-      <h1>El Reino de los Sabores Perdidos</h1>
-      <p>Los helados más refrescantes de oceáno directamente a tu paladar</p>
+
+    <section class="inicio" id="inicio">
+      <div class="inicio-content">
+        <h1 class="titulo">El Reino de los Sabores Perdidos</h1>
+        <p class="descripcion">Los helados más refrescantes del oceáno directamente a tu paladar</p>
+      </div>
     </section>
 
-    <section id="catalogo">
-        <h2>Nuestro menú</h2>
-      
-      <ul>
-        <li>
-          <a href="#postres">Postres</a>
-        </li>
-        <li>
-          <a href="#helados">Helados</a>
-        </li>
-        <li>
-          <a href="#ensalada-de-frutas">ensala de frutas</a>
-        </li>
-      </ul>
-      </section>
+    </main>
+
+
+
+    <section class="catalogo" id="catalogo">
+      <h2 button class="catalogo-titulo">Nuestro menú</h2>
 
 
       <section id="postres">
-          <h2>Postres</h2>
-        
+        <h2>Postres</h2>
+
         <article class="product-card">
           <h3>Postre Oreo</h3>
-          <img src="./assets/img/postre-oreo.jpeg" alt="postre-oreo" width="200">
+          <img src="./assets/img/postre-oreo.jpeg" alt="Postre de Oreo">
           <p>Suave, cremoso y lleno de sabor a Oreo</p>
         </article>
 
         <article>
           <h3>Postre Tres Leches</h3>
-          <img src="./assets/img/postre-tresleches.jpeg" alt="postre-tresleches" width="200">
+          <img src="./assets/img/postre-tresleches.jpeg" alt="Postre de tres leches">
           <p>Clásico cremoso bañado en tres leches con fresas</p>
         </article>
 
         <article>
           <h3>Postre Fresas</h3>
-          <img src="./assets/img/postre-fresa.jpeg" alt="postre-fresa" width="210">
+          <img src="./assets/img/postre-fresa.jpeg" alt="Postre de fresa">
           <p>Casero sabor a fresa</p>
         </article>
 
         <article>
           <h3>Postre Chocolate</h3>
-          <img src="./assets/img/postre-chocolate.jpeg" alt="postre-chocolate" width="200">
+          <img src="./assets/img/postre-chocolate.jpeg" alt="Postre de chocolate">
           <p>Combinación perfecta de chocolate y crema</p>
         </article>
       </section>
 
       <section id="helados">
-          <h2>Helados</h2>
-        
+        <h2>Helados</h2>
+
         <article class="product-card">
           <h3>Oreo Crunch</h3>
-          <img src="./assets/img/helado-oreo.jpeg" alt="helado-oreo" width="200">
+          <img src="./assets/img/helado-oreo.jpeg" alt="Helado de sabor Oreo">
           <p>Crujiente, cremoso y lleno de galletas Oreo</p>
         </article>
 
         <article>
           <h3>Nube de Milo</h3>
-          <img src="./assets/img/helado-milo.jpeg" alt="helado-milo" width="200">
+          <img src="./assets/img/helado-milo.jpeg" alt="Helado de sabor milo">
           <p>El sabor que marcó tu infancia, ¡Ahora en una cucharada de felicidad!</p>
         </article>
 
         <article>
           <h3>Chocolate & Brownie</h3>
-          <img src="./assets/img/helado-brownie.jpeg" alt="helado-brownie" width="200">
+          <img src="./assets/img/helado-brownie.jpeg" alt="Helado de sabor brownie">
           <p>Brownie artesanal, chocolate intenso y una textura irresistible</p>
         </article>
 
 
         <article>
           <h3>Vainilla Deluxe</h3>
-          <img src="./assets/img/helado-vainilla.jpeg" alt="helado-vainilla" width="200">
+          <img src="./assets/img/helado-vainilla.jpeg" alt="Helado de sabor vainilla">
           <p>Vainilla auténtica con una suavidad que enamora</p>
         </article>
       </section>
 
       <section id="ensalada-de-frutas">
-          <h1>Ensalada de frutas</h1>
-        
+        <h2>Ensalada de frutas</h2>
+
         <article>
           <h3>Frutal Clásica</h3>
+          <img src="./assets/img/ensal-frutas.jpeg" alt="Ensalada de frutas">
           <p>Frutas frescas, crema y un toque de leche condensada</p>
-          <img src="./assets/img/ensal-frutas.jpeg" alt="ensalada de frutas" width="200">
         </article>
 
         <article>
           <h3>Frutas Sue Sue</h3>
-          <img src="./assets/img/ensal-ffrutas-helado.jpeg" alt="ensalada de frutas con helado" width="200">
+          <img src="./assets/img/ensal-ffrutas-helado.jpeg" alt="Ensalada de frutas con helado">
           <p>Helado de vainilla, fresas, kiwi y arándanos</p>
         </article>
 
         <article>
           <h3>Hawái Tropical</h3>
-          <img src="./assets/img/ensal-hawaiana.jpeg" alt="ensalada hawaiana" width="200">
+          <img src="./assets/img/ensal-hawaiana.jpeg" alt="Ensalada hawaiana">
           <p>Piña, crema, queso y coco rallado</p>
         </article>
       </section>
 
-  </main>
+    </section>
+  
 
   <footer>
     <p>Copyright &copy; 2026 Atlantis' Ice Creams</p>
+    <p>¡Visitanos en nuestras redes!</p>
     <ul>
       <li>
         <a href="https://www.instagram.com/atlantis_ice_creams/">Instagram</a>
