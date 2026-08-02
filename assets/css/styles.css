@@ -1,0 +1,346 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-fondo: #d0e7e0;
+  --color-fondo-suave: #e4f3ee;
+  --color-primario: #236962;
+  --color-secundario: #63b0a8;
+  --color-nav: #7dcfcf;
+  --color-tarjeta: #76c0a7;
+  --color-texto-claro: #e8eeed;
+}
+
+html,
+body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Quicksand', sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-primario);
+}
+
+main {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-barra {
+  background-color: var(--color-nav);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.navegacion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.logo {
+  font-family: 'Lobster Two', cursive;
+  font-size: 2rem;
+  color: var(--color-primario);
+  text-decoration: none;
+}
+
+.navegacion ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-enlace,
+.navegacion ul li a {
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: var(--color-primario);
+  transition: transform 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+  display: inline-block;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.nav-enlace:hover,
+.navegacion ul li a:hover {
+  color: var(--color-fondo-suave);
+  transform: scale(1.1);
+}
+
+.inicio {
+  background-color: var(--color-fondo-suave);
+  width: 100%;
+  min-height: 50vh;
+  margin: 0 auto;
+  padding: 1rem 0 1rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.inicio-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 5rem;
+  padding: 3rem 1.5rem;
+}
+
+.titulo {
+  font-family: 'Offside', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--color-primario);
+  text-align: left;
+  transition: transform 0.3s ease-in-out;
+  display: inline-block;
+
+}
+
+.titulo:hover {
+  transform: scale(1.05);
+}
+
+.descripcion {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: var(--color-secundario);
+  text-align: left;
+  padding: 1rem 0;
+  transition: transform 0.3s ease-in-out;
+  display: inline-block;
+}
+
+.descripcion:hover {
+  transform: scale(1.05);
+}
+
+.catalogo {
+  background-color: var(--color-fondo);
+  width: 100%;
+  padding: 3rem 1.25rem;
+}
+
+.catalogo-titulo {
+  font-family: 'Offside', sans-serif;
+  font-weight: bolder;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  padding: 1rem;
+  color: var(--color-secundario);
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-fondo-suave);
+  border: none;
+  border-radius: 1rem;
+  transition: transform 0.3s ease-in-out;
+  margin: 0 auto 3rem;
+  width: min(1200px, 100%);
+}
+
+.catalogo-titulo:hover {
+  transform: scale(1.05);
+}
+
+#postres,
+#helados,
+#ensalada-de-frutas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+  width: min(1200px, 100%);
+  margin: 0 auto 3rem;
+}
+
+.titulo-seccion {
+  font-family: 'Offside', sans-serif;
+  font-weight: bolder;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  padding: 1rem;
+  color: var(--color-primario);
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out;
+  margin-bottom: 0;
+  grid-column: 1 / -1;
+}
+
+.titulo-seccion:hover {
+  transform: scale(1.05);
+}
+
+.producto-tarjeta {
+  background-color: var(--color-tarjeta);
+  width: 100%;
+  max-width: 260px;
+  min-height: 420px;
+  height: 100%;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  transition: transform 0.3s ease-in-out;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(35, 105, 98, 0.12);
+}
+
+.producto-tarjeta:hover {
+  transform: scale(1.05);
+}
+
+.imagen-catalogo {
+  width: 100%;
+  max-width: 180px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.titulo-producto-tarjeta {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bolder;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  padding: 0;
+  color: var(--color-primario);
+  text-align: center;
+  margin: 0 0 1rem;
+  min-height: 3.5rem;
+}
+
+.contenido-tarjeta {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  color: var(--color-texto-claro);
+  text-align: center;
+  padding: 1rem 0 0;
+  display: block;
+  line-height: 1.5;
+  width: 100%;
+  flex: 1;
+}
+
+
+#contacto {
+  width: 100%;
+  margin: 0;
+  padding: 3rem 1rem;
+  background-color: var(--color-fondo-suave);
+  text-align: center;
+}
+
+#contacto p {
+  max-width: 680px;
+  margin: 0.75rem auto 2rem;
+}
+
+#contacto form {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+#contacto label {
+  text-align: center;
+}
+
+#contacto input,
+#contacto textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgba(35, 105, 98, 0.2);
+  border-radius: 0.75rem;
+  font: inherit;
+}
+
+#contacto input[type="submit"] {
+  cursor: pointer;
+  background-color: var(--color-secundario);
+  color: white;
+  border: none;
+}
+
+.pie-pagina {
+  background-color: var(--color-fondo);
+  width: 100%;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.redes-ul,
+.redes {
+  color: var(--color-secundario);
+  text-decoration: none;
+  list-style-type: none;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .navegacion {
+    flex-direction: column;
+    width: calc(100% - 2rem);
+    padding: 1rem;
+  }
+
+  .navegacion ul {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .logo {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  .inicio-content {
+    padding: 1rem;
+  }
+
+  .titulo,
+  .descripcion {
+    text-align: center;
+  }
+
+  .catalogo {
+    padding: 2rem 1rem;
+  }
+
+  #postres,
+  #helados,
+  #ensalada-de-frutas {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .producto-tarjeta {
+    max-width: 100%;
+    min-height: 380px;
+  }
+
+  .titulo-producto-tarjeta {
+    min-height: auto;
+  }
+
+
+  #contacto {
+    padding: 2rem 1rem;
+  }
+}
