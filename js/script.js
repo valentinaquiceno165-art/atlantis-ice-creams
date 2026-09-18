@@ -1,8 +1,24 @@
 const botones = document.getElementsByClassName("btn-pedir");
-console.log(botones)
+
+const numero = "573052946125"
+
 
 for (let i = 0; i < botones.length; i++) {
   botones[i].addEventListener("click", function(){
-    console.log("boton presionado");
-  });
-}
+    const mensaje = "¡Hola!, quiero pedir " + botones[i].dataset.articulo + " " + botones[i].dataset.producto + "."
+
+    const enlace = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensaje)
+
+    window.open(enlace)
+  }
+
+)} 
+
+
+
+
+
+
+
+
+
