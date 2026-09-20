@@ -26,8 +26,12 @@
 
 <body>
   <header class="nav-barra">
+  
     <nav class="navegacion">
       <a href="#inicio" class="logo">Atlantis' Ice Creams</a>
+
+<input type="text" id="buscador" placeholder="Buscar producto...">
+
       <ul>
         <li>
           <a class="nav-enlace" href="#inicio">Inicio</a>
@@ -41,6 +45,7 @@
         </li>
       </ul>
     </nav>
+ 
   </header>
 
 
@@ -55,7 +60,7 @@
 
     </main>
 
-    <section class="catalogo">
+    <section id="catalogo" class="catalogo">
       <h2 class="catalogo-titulo">Nuestro menú</h2>
 
 
@@ -167,7 +172,7 @@
       <p>Estamos aquí para ayudarte. Si tienes preguntas acerca de nosotros o necesitas asistencia, ¡Envíanos un
         mensaje!</p>
 
-      <form action="mailto:atlantisicecream0ficial@gmail.com" method="post">
+      <form id="formulario-contacto" action="mailto:atlantisicecream0ficial@gmail.com" method="post">
         <label for="name">Nombre:</label>
         <input type="text" id="name" autocomplete="name" name="name" required><br>
 
@@ -180,7 +185,11 @@
 
         <input type="submit" value="Enviar">
       </form>
-    </section>
+
+      
+    <p id="mensaje-formulario"></p>
+    
+  </section>
 
 
   <footer class="pie-pagina">
@@ -199,7 +208,9 @@
     </ul>
   </footer>
 
-<script src="./js/script.js"></script>
+<script src="./js/pedidos.js"></script>
+<script src="./js/formulario.js"></script>
+<script src="./js/buscador.js"></script>
 </body>
 
 </html>
