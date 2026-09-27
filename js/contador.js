@@ -16,8 +16,9 @@ for (let i = 0; i < botonesmas.length; i++) {
 
     cantidades[i].textContent = cantidad;
 
-  });
+});
 }
+
 
 for (let i = 0; i < botonesmenos.length; i++) {
 
@@ -28,11 +29,12 @@ for (let i = 0; i < botonesmenos.length; i++) {
     cantidad--;
     
     //establece el limite de resta del contador (que no de numeros negativos)
-    cantidad = Math.max(0, cantidad - 1);
+    cantidad = Math.max(0, cantidad);
 
     //que muestre la cantidad en el contador
     cantidades[i].textContent = cantidad;
   
-  });
+});
 }
+
 
