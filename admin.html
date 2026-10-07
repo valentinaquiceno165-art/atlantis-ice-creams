@@ -1,0 +1,107 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atlantis Ice Creams - Panel Admin</title>
+  <link rel="stylesheet" href="./assets/css/admin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Offside&family=Quicksand:wght@300..700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+ <header class="nav-barra">
+  <nav class="navegacion">
+
+      <a href="#inicio" class="logo">Atlantis' Ice Creams</a>
+      <p class="titulo-admin">Panel Admin</p>
+
+      <input type="text" id="buscador" placeholder="Buscar por nombre...">
+
+      <ul>
+        <li>
+          <a class="nav-enlace" href="#resumen">Resumen</a>
+        </li>
+
+        <li>
+          <a class="nav-enlace" href="#productos">Productos</a>
+        </li>
+
+        <li>
+          <a class="nav-enlace" href="#pedidos">Pedidos</a>
+        </li>
+
+        <li>
+          <a class="nav-enlace" href="#mensajes">Mensajes</a>
+        </li>
+      </ul>
+
+    </nav>
+ </header> 
+
+ <main>
+
+  <section id="resumen">
+
+    <h1 class="titulo-resumen">RESUMEN</h1>
+
+    <div class="resumen-item">
+      <p id="total-productos" class="total">Total de productos</p>
+      <p id="total-productos-valor" class="valor">0</p>
+    </div>
+
+    <div class="resumen-item">
+      <p id="total-pedidos" class="total">Total de pedidos</p>
+      <p id="total-pedidos-valor" class="valor">0</p>
+    </div>
+
+    <div class="resumen-item">
+      <p id="total-mensajes" class="total">Total de mensajes</p>
+      <p id="total-mensajes-valor" class="valor">0</p>
+    </div>
+
+  </section>
+  <section id="productos">
+
+    <h1 class="titulo-productos">PRODUCTOS</h1>
+    <button id="btn-agregar">Agregar producto</button>
+
+    <div id="lista-productos">
+
+    </div>
+
+  </section>
+
+  <section id="pedidos">
+    <h1 class="titulo-pedidos">PEDIDOS</h1>
+    <div id="lista-pedidos">
+
+    </div>
+  </section>
+
+  <section id="mensajes">
+    <h1 class="titulo-mensajes">MENSAJES</h1>
+    <div id="lista-mensajes">
+
+    </div>
+
+  </section>
+
+ </main>
+
+ <script type="module" src="./js/admin.js"></script>
+
+</body>
+</html>

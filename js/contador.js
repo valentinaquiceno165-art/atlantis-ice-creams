@@ -2,9 +2,6 @@ const botonesmas = document.getElementsByClassName("mas");
 const botonesmenos = document.getElementsByClassName("menos");
 const cantidades = document.getElementsByClassName("cantidad");
 
-console.log(botonesmas.length);
-console.log(botonesmenos.length);
-
 for (let i = 0; i < botonesmas.length; i++) {
 
 
@@ -28,7 +25,7 @@ for (let i = 0; i < botonesmenos.length; i++) {
     let cantidad = Number(cantidades[i].textContent);
     cantidad--;
     
-    //establece el limite de resta del contador (que no de numeros negativos)
+    //establece el limite de resta del contador (que no de numeros negativos y reemplaza un condicional)
     cantidad = Math.max(0, cantidad);
 
     //que muestre la cantidad en el contador
