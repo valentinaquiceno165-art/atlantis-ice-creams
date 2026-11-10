@@ -1,0 +1,382 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-fondo: #d0e7e0;
+  --color-fondo-suave: #e4f3ee;
+  --color-primario: #236962;
+  --color-secundario: #63b0a8;
+  --color-nav: #7dcfcf;
+  --color-tarjeta: #76c0a7;
+  --color-texto-claro: #e8eeed;
+}
+
+.panel-admin {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-fondo);
+  font-family: 'Quicksand', sans-serif;
+  color: var(--color-primario);
+}
+
+/* ===== Cabecera ===== */
+.panel-admin header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 1.5rem 1.25rem;
+  background-color: var(--color-nav);
+}
+
+.panel-admin header h1 {
+  font-family: 'Lobster Two', cursive;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  color: var(--color-primario);
+  text-align: center;
+}
+
+.panel-admin header h2 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--color-primario);
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.panel-admin header nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.panel-admin header nav button {
+  cursor: pointer;
+  border: none;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.6rem 1.5rem;
+  border-radius: 5rem;
+  color: var(--color-texto-claro);
+  background-color: var(--color-primario);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.panel-admin header nav button:hover {
+  transform: scale(1.05);
+  background-color: var(--color-secundario);
+}
+
+.panel-admin header nav button:active {
+  transform: scale(0.98);
+}
+
+.panel-admin header nav button:last-child {
+  background-color: var(--color-fondo);
+  color: var(--color-primario);
+}
+
+.panel-admin header nav button:last-child:hover {
+  background-color: var(--color-fondo-suave);
+}
+
+/* ===== Zona de contenido ===== */
+.panel-admin main {
+  flex: 1;
+  width: 100%;
+  padding: 2.5rem 1.25rem;
+}
+
+.panel-admin main > section {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.panel-admin main > section > h2 {
+  font-family: 'Offside', sans-serif;
+  font-weight: bolder;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  color: var(--color-secundario);
+  text-align: center;
+}
+
+.panel-admin main p {
+  font-family: 'Quicksand', sans-serif;
+  color: var(--color-primario);
+}
+
+/* Botones de las secciones (Agregar producto, Guardar, etc.) */
+.panel-admin main button {
+  align-self: flex-start;
+  cursor: pointer;
+  border: none;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.65rem 1.5rem;
+  border-radius: 5rem;
+  color: var(--color-texto-claro);
+  background-color: var(--color-primario);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.panel-admin main button:hover {
+  transform: scale(1.05);
+  background-color: var(--color-secundario);
+}
+
+.panel-admin main button:active {
+  transform: scale(0.98);
+}
+
+/* ===== Resumen ===== */
+.tarjetas-resumen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.tarjetas-resumen article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-radius: 1rem;
+  box-shadow: 0 10px 24px rgba(35, 105, 98, 0.12);
+  transition: transform 0.3s ease-in-out;
+}
+
+.tarjetas-resumen article:hover {
+  transform: scale(1.03);
+}
+
+.tarjeta-productos {
+  background-color: var(--color-tarjeta);
+}
+
+.tarjeta-mensajes {
+  background-color: var(--color-secundario);
+}
+
+.tarjetas-resumen article span {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.tarjetas-resumen article h3 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-texto-claro);
+}
+
+.tarjetas-resumen article p {
+  font-family: 'Offside', sans-serif;
+  font-size: 2.5rem;
+  color: var(--color-fondo-suave);
+}
+
+/* ===== Formulario de productos ===== */
+.panel-admin main form {
+  align-self: center;
+  display: grid;
+  gap: 0.85rem;
+  width: min(520px, 100%);
+  padding: 1.75rem;
+  background-color: var(--color-fondo-suave);
+  border-radius: 1rem;
+  box-shadow: 0 10px 24px rgba(35, 105, 98, 0.12);
+}
+
+.panel-admin main form h3 {
+  font-family: 'Offside', sans-serif;
+  font-size: 1.3rem;
+  color: var(--color-primario);
+  text-align: center;
+}
+
+.panel-admin main form input:not([type="checkbox"]),
+.panel-admin main form textarea,
+.panel-admin main form select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(35, 105, 98, 0.2);
+  border-radius: 0.75rem;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  background-color: var(--color-texto-claro);
+  color: var(--color-primario);
+  outline: none;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.panel-admin main form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.panel-admin main form input:focus,
+.panel-admin main form textarea:focus,
+.panel-admin main form select:focus {
+  border-color: var(--color-secundario);
+  box-shadow: 0 0 0 3px rgba(99, 176, 168, 0.25);
+}
+
+.panel-admin main form input::placeholder,
+.panel-admin main form textarea::placeholder {
+  color: var(--color-secundario);
+}
+
+.panel-admin main form label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: var(--color-primario);
+}
+
+.panel-admin main form label input[type="checkbox"] {
+  width: auto;
+  accent-color: var(--color-primario);
+}
+
+.panel-admin main form img {
+  width: 150px;
+  border-radius: 0.75rem;
+  align-self: center;
+}
+
+.panel-admin main form button[type="submit"] {
+  align-self: stretch;
+  justify-self: stretch;
+}
+
+/* ===== Lista de productos ===== */
+.lista-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.lista-productos article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  height: 100%;
+  padding: 1.25rem;
+  text-align: center;
+  background-color: var(--color-tarjeta);
+  border-radius: 1rem;
+  box-shadow: 0 10px 24px rgba(35, 105, 98, 0.12);
+  transition: transform 0.3s ease-in-out;
+}
+
+.lista-productos article:hover {
+  transform: scale(1.03);
+}
+
+.lista-productos article img {
+  width: 100%;
+  max-width: 150px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.lista-productos article h3 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-primario);
+}
+
+.lista-productos article p {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.95rem;
+  color: var(--color-texto-claro);
+}
+
+/* ===== formularios ===== */
+.panel-admin main > section > article {
+  padding: 1.25rem 1.5rem;
+  background-color: var(--color-fondo-suave);
+  border-radius: 1rem;
+  box-shadow: 0 10px 24px rgba(35, 105, 98, 0.12);
+  border-left: 5px solid var(--color-secundario);
+}
+
+.panel-admin main > section > article h3 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primario);
+  margin-bottom: 0.25rem;
+}
+
+.panel-admin main > section > article p {
+  font-family: 'Quicksand', sans-serif;
+  color: var(--color-primario);
+  line-height: 1.5;
+}
+
+
+@media (max-width: 768px) {
+  .panel-admin header {
+    padding: 1.25rem 1rem;
+  }
+
+  .panel-admin header nav button {
+    flex: 1 1 auto;
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .panel-admin main {
+    padding: 2rem 1rem;
+  }
+
+  .panel-admin main form {
+    padding: 1.5rem;
+  }
+
+  .lista-productos {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .panel-admin header nav button {
+    flex: 1 1 100%;
+  }
+
+  .tarjetas-resumen {
+    grid-template-columns: 1fr;
+  }
+
+  .lista-productos {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-admin main button {
+    align-self: stretch;
+    text-align: center;
+  }
+}
