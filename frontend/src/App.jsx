@@ -1,44 +1,71 @@
-import React, { useState } from "react"
-import Navbar from "./Components/Navbar"
-import Alerta from "./Components/Alerta"
-import Bienvenida from "./Components/Bienvenida"
-import Catalogo from "./Components/Catalogo"
-import Contacto from "./Components/Contacto"
-import PiePagina from "./Components/PiePagina"
-import PanelAdmin from "./admin/PanelAdmin"
-import Login from "./admin/Login"
+import { useEffect, useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 
+import Navbar from "./Components/Navbar";
+import Bienvenida from "./Components/Bienvenida";
+import Catalogo from "./Components/Catalogo";
+import Contacto from "./Components/Contacto";
+import PiePagina from "./Components/PiePagina";
 
-function App() {
+import Login from "./admin/Login";
+import PanelAdmin from "./admin/PanelAdmin";
 
-  const [busqueda, setBusqueda] = useState("");
+// Comprobar si existe una sesión válida
+function RutaProtegida() {
+    const [autorizado, setAutorizado] = useState(null);
 
-  return (
-    <>
-      <Login />
-      <header>
-        <Navbar busqueda={busqueda} setBusqueda={setBusqueda} />
-      </header>
+    useEffect(() => {
+        fetch('/api/verificar-sesion', {
+            credentials: 'include'
+        })
+        .then(res => setAutorizado(res.ok))
+        .catch(() => setAutorizado(false));
+    }, []);
 
+    if (autorizado === null) {
+        return <p>Comprobando sesión...</p>;
+    }
 
-      <main>
-        <Bienvenida />
-      </main>
-
-      <section>
-        <Catalogo busqueda={busqueda} />
-      </section>
-
-      <section>
-        <aside>
-          <Contacto />
-        </aside>
-      </section>
-      <footer>
-        <PiePagina />
-      </footer>
-    </>
-  )
+    return autorizado ? <PanelAdmin /> : <Navigate to="/admin" replace />;
 }
 
-export default App
+function PaginaPrincipal() {
+    const [busqueda, setBusqueda] = useState("");
+
+    return (
+        <>
+            <header>
+                <Navbar busqueda={busqueda} setBusqueda={setBusqueda} />
+            </header>
+
+            <main>
+                <Bienvenida />
+            </main>
+
+            <section>
+                <Catalogo busqueda={busqueda} />
+            </section>
+
+            <section>
+                <Contacto />
+            </section>
+
+            <footer>
+                <PiePagina />
+            </footer>
+        </>
+    );
+}
+
+function App() {
+    return (
+        <Routes>
+            <Route path="/" element={<PaginaPrincipal />} />
+            <Route path="/admin" element={<Login />} />
+            <Route path="/admin/panel" element={<RutaProtegida />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+    );
+}
+
+export default App;

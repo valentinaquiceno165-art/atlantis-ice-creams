@@ -13,11 +13,9 @@ function Resumen() {
             .catch(error => console.log(error));
 
         fetch('/api/formulario', {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`
-            }
+            credentials: 'include'
         })
-            .then(res => res.json())
+            .then(res => res.ok ? res.json() : [])
             .then(datos => setFormulario(datos))
             .catch(error => console.log(error));
 

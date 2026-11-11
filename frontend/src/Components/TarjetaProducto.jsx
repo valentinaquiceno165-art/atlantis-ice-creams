@@ -29,7 +29,7 @@ function TarjetaProducto({ nombre, precio, descripcion, imagen, onCantidadChange
   return (
     <article className='producto-tarjeta'>
       <h3 className='titulo-producto-tarjeta'>{nombre}</h3>
-      <img className="imagen-catalogo" src={imagen} alt={nombre} />
+            <img className="imagen-catalogo" src={imagen && imagen.startsWith('/') ? imagen : `/${imagen}`} alt={nombre} />
       <p className='contenido-tarjeta'>{descripcion}</p>
       <p className='precio'>{precioFormateado}</p>
 

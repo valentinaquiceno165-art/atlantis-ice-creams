@@ -8,9 +8,18 @@ function PanelAdmin() {
 
     const [seccion, setSeccion] = useState('resumen');
 
-    const cerrarSesion = () => {
-        localStorage.removeItem('token');
-        window.location.reload();
+    const cerrarSesion = async () => {
+        try {
+            await fetch('/api/logout', {
+                method: 'POST',
+                credentials: 'include',
+            });
+
+            window.location.reload();
+
+        } catch (error) {
+            console.error('Error al cerrar sesión:', error);
+        }
     };
 
     return (

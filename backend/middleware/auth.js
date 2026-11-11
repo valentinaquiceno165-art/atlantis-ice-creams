@@ -2,8 +2,8 @@ const jwt = require('jsonwebtoken');
 
 function verificarAdmin(req, res, next) {
 
-    //toma el segundo elemento(token) despues del espacio
-    const token = req.headers.authorization?.split(' ')[1];
+    //consulta el token por la cookie q envia al navegador
+    const token = req.cookies.token;
 
     if (!token) {
         return res.status(401).json({

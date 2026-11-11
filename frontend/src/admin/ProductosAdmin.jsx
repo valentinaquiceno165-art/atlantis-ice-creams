@@ -1,5 +1,12 @@
 import { useState, useEffect } from 'react';
 
+//normalizar la ruta de la imagen para que funcione en el admin
+const normalizarImagen = (ruta) => {
+    if (!ruta) return '';
+     if (/^https?:\/\//.test(ruta) || ruta.startsWith('/')) return ruta;
+    return `/${ruta}`;
+}
+
 function ProductosAdmin() {
 
   //variable para mostrar los productos
@@ -54,8 +61,6 @@ function ProductosAdmin() {
 
     e.preventDefault();
 
-    const token = localStorage.getItem('token');
-
     try {
 
         const datosProducto = {
@@ -72,10 +77,10 @@ function ProductosAdmin() {
                 ? `/api/productos/${idEditar}`
                 : '/api/productos',
             {
+                credentials: 'include',
                 method: idEditar ? 'PUT' : 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`
                 },
                 body: JSON.stringify(datosProducto)
             }
@@ -110,16 +115,12 @@ function ProductosAdmin() {
   const eliminarProducto = async (id) => {
 
     const confirmar = window.confirm('¿Estás seguro de eliminar este producto?');
-
     if(!confirmar) return;
-    const token = localStorage.getItem('token');
 
     try {
         const respuesta = await fetch(`/api/productos/${id}`, {
             method: 'DELETE',
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
+            credentials: 'include'
         });
 
         if (!respuesta.ok) throw new Error();
@@ -189,7 +190,7 @@ function ProductosAdmin() {
 
                     {imagen && (
                         <img
-                            src={imagen}
+                            src={normalizarImagen(imagen)}
                             alt="Vista previa"
                             width="150"
                             onError={e => e.currentTarget.style.display = 'none'}
@@ -229,7 +230,7 @@ function ProductosAdmin() {
                 {productos.map(p => (
                     <article key={p._id}>
 
-                        <img src={p.imagen} alt={p.nombre} />
+                        <img src={normalizarImagen(p.imagen)} alt={p.nombre} />
 
                         <h3>{p.nombre}</h3>
                         <p>${p.precio}</p>

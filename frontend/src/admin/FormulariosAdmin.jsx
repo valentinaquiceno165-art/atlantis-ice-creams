@@ -7,9 +7,7 @@ function FormulariosAdmin() {
   useEffect(() => {
 
     fetch('/api/formulario', {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-      }
+      credentials: 'include'
     })
       .then(res => {
         if (!res.ok) {

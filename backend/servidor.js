@@ -2,17 +2,24 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const producto = require('./modelos/productos.js');
 const Usuario = require('./modelos/usuario.js');
 const formulario = require('./modelos/formulario.js');
 const verificarAdmin = require('./middleware/auth.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 const app = express();
+app.use(cors({
+    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    credentials: true,
+}));
 app.use(express.json());
+app.use(cookieParser());
 
 const MONGODB_URI = process.env.MONGODB_URI;
-const PUERTO = process.env.PUERTO || 3001;
+const PUERTO = process.env.PORT || process.env.PUERTO || 3001;
 
 const conectarDB = async () => {
     try {
@@ -24,8 +31,6 @@ const conectarDB = async () => {
     }
 }
 
-conectarDB();
-
 app.get('/', (req, res) => {
     res.send('Servidor Atlantis funcionando');
 });
@@ -34,13 +39,10 @@ app.get('/', (req, res) => {
 app.post('/login', async (req, res) => {
 
     const { correo, contraseña } = req.body;
-    console.log("Correo Recibido:", correo);
 
     try {
         // Buscar el administrador
         const usuarioEncontrado = await Usuario.findOne({ correo });
-        console.log("¡Usuario encontrado!", !!usuarioEncontrado);
-
 
         if (!usuarioEncontrado) {
             return res.status(401).json({
@@ -53,7 +55,6 @@ app.post('/login', async (req, res) => {
             contraseña,
             usuarioEncontrado.contraseña
         );
-        console.log("¡Contraseña correcta!:", !!contraseñaCorrecta);
 
         if (!contraseñaCorrecta) {
             return res.status(401).json({
@@ -74,9 +75,17 @@ app.post('/login', async (req, res) => {
             { expiresIn: '1h' }
         );
 
+        //guardar el token en la cookie
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+            maxAge: 60 * 60 * 1000, // 1 hora
+            path: '/'
+        });
+
         res.json({
             mensaje: 'Inicio de sesión correcto',
-            token: token
         });
 
     } catch (error) {
@@ -86,13 +95,33 @@ app.post('/login', async (req, res) => {
     }
 });
 
+//comprueba q la cookie contenga el token y sea admin
+app.get('/verificar-sesion', verificarAdmin, (req, res) => {
+    res.json({
+        autenticado: true
+    });
+});
+
+//eliminamos la cookie cuando el admin cierra sesion
+app.post('/logout', (req, res) => {
+    res.clearCookie('token', {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+        path: '/'
+    });
+    res.json({
+        mensaje: 'Sesión cerrada correctamente'
+    });
+});
+
 
 //registra los mensajes
 app.post('/formulario', async (req, res) => {
 
     try {
         const { nombre, correo, mensaje } = req.body;
-        
+
         if (!nombre || !correo || !mensaje) {
             return res.status(400).json({
                 mensaje: 'Por favor, completa todos los campos'
@@ -105,7 +134,7 @@ app.post('/formulario', async (req, res) => {
             mensaje
         })
 
-               res.status(201).json({
+        res.status(201).json({
             mensaje: 'Mensaje enviado correctamente'
         });
 
@@ -240,7 +269,7 @@ app.delete("/productos/:id", verificarAdmin, async (req, res) => {
     try {
         const eliminado = await producto.findByIdAndDelete(req.params.id);
 
-        if(!eliminado) {
+        if (!eliminado) {
             return res.status(404).json({
                 mensaje: 'Producto no encontrado'
             });
@@ -255,17 +284,16 @@ app.delete("/productos/:id", verificarAdmin, async (req, res) => {
     }
 });
 
-
-
-app.listen(PUERTO, () => {
-    res.status(500).json({
-            mensaje: 'Error al eliminar el producto'
+//evitar q reciba peticiones el servidor antes de q la base de datos este conectada
+const iniciarServidor = async () => {
+    try {
+        await conectarDB();
+        app.listen(PUERTO, () => {
+            console.log('Servidor funcionando en http://localhost:' + PUERTO);
         });
- });
-    
+    } catch (error) {
+        console.log('Error al conectar la base de datos:', error);
+    }
+};
 
-
-
-app.listen(PUERTO, () => {
-    console.log('Servidor funcionando en http://localhost:' + PUERTO);
-});
+iniciarServidor();
