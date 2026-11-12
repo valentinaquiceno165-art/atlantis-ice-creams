@@ -4,11 +4,12 @@ import { useState, useEffect } from 'react';
 const normalizarImagen = (ruta) => {
     if (!ruta) return '';
      if (/^https?:\/\//.test(ruta)) return ruta;
+
+     const RutaLimpia = ruta.replace (/^\/+/, '');
+    return `${import.meta.env.BASE_URL}${RutaLimpia}`;
     
 }
 
-const RutaLimpia = ruta.replace (/^\/+/, '');
-return `${import.meta.env.BASE_URL}${RutaLimpia}`;
 
 function ProductosAdmin() {
 
