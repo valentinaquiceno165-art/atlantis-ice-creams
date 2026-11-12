@@ -12,7 +12,7 @@ function Login() {
 
     // Comprobar si ya existe una sesión
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_API_URL}/api/verificar-sesion`, {
+        fetch(`${import.meta.env.VITE_API_URL}/verificar-sesion`, {
             credentials: 'include'
         })
         .then(res => {
@@ -30,7 +30,7 @@ function Login() {
         setMensaje('');
 
         try {
-            const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
+            const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {

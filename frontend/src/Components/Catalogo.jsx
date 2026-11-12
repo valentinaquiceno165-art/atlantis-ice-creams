@@ -9,7 +9,7 @@ function Catalogo({ busqueda = "" }) {
 
   // Traemos los productos de la base de datos cuando la página se carga por primera vez
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/productos`)  
+    fetch(`${import.meta.env.VITE_API_URL}/productos`)  
       .then(res => res.json())
       .then(datos => setProductos(datos));
   }, []);
