@@ -11,6 +11,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const app = express();
+
 // Orígenes permitidos: FRONTEND_URL (admite varios separados por comas) + localhost para dev/preview
 const origenesPermitidos = [
     ...(process.env.FRONTEND_URL ? process.env.FRONTEND_URL.split(',').map((o) => o.trim()) : []),
