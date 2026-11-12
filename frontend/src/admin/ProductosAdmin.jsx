@@ -190,7 +190,7 @@ function ProductosAdmin() {
 
                     {imagen && (
                         <img
-                            src={normalizarImagen(imagen)}
+                            src={`${import.meta.env.BASE_URL}${normalizarImagen(imagen)}`}
                             alt="Vista previa"
                             width="150"
                             onError={e => e.currentTarget.style.display = 'none'}
