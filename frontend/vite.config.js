@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3001',
+        target: 'https://atlantis-ice-creams.onrender.com',
         changeOrigin: true,
         rewrite: (ruta) => ruta.replace(/^\/api/, ''),
       },
