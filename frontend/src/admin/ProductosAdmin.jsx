@@ -3,9 +3,12 @@ import { useState, useEffect } from 'react';
 //normalizar la ruta de la imagen para que funcione en el admin
 const normalizarImagen = (ruta) => {
     if (!ruta) return '';
-     if (/^https?:\/\//.test(ruta) || ruta.startsWith('/')) return ruta;
-    return `/${ruta}`;
+     if (/^https?:\/\//.test(ruta)) return ruta;
+    
 }
+
+const RutaLimpia = ruta.replace (/^\/+/, '');
+return `${import.meta.env.BASE_URL}${RutaLimpia}`;
 
 function ProductosAdmin() {
 
@@ -190,7 +193,7 @@ function ProductosAdmin() {
 
                     {imagen && (
                         <img
-                            src={`${import.meta.env.BASE_URL}${normalizarImagen(imagen)}`}
+                            src={normalizarImagen(imagen)}
                             alt="Vista previa"
                             width="150"
                             onError={e => e.currentTarget.style.display = 'none'}
