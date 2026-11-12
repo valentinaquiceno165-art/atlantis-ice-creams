@@ -6,7 +6,7 @@ function FormulariosAdmin() {
 
   useEffect(() => {
 
-    fetch('/api/formulario', {
+    fetch(`${import.meta.env.VITE_API_URL}/api/formulario`, {
       credentials: 'include'
     })
       .then(res => {

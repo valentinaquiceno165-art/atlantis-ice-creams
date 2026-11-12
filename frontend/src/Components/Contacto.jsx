@@ -12,7 +12,7 @@ function Contacto() {
     e.preventDefault();
 
     try {
-      const respuesta = await fetch('/api/formulario', {
+      const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/api/formulario`, { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

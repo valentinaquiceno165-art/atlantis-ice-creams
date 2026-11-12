@@ -44,7 +44,7 @@ function ProductosAdmin() {
 
     const cargarProductos = async () => {
         try {
-            const respuesta = await fetch('/api/productos');
+            const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/api/productos`);
             if (!respuesta.ok) throw new Error();
             const datos = await respuesta.json();
             setProductos(datos);
@@ -74,8 +74,8 @@ function ProductosAdmin() {
 
         const respuesta = await fetch(
             idEditar
-                ? `/api/productos/${idEditar}`
-                : '/api/productos',
+                ? `${import.meta.env.VITE_API_URL}/api/productos/${idEditar}`
+                : `${import.meta.env.VITE_API_URL}/api/productos`,
             {
                 credentials: 'include',
                 method: idEditar ? 'PUT' : 'POST',
@@ -118,7 +118,7 @@ function ProductosAdmin() {
     if(!confirmar) return;
 
     try {
-        const respuesta = await fetch(`/api/productos/${id}`, {
+        const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/api/productos/${id}`, {
             method: 'DELETE',
             credentials: 'include'
         });

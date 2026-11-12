@@ -7,12 +7,12 @@ function Resumen() {
 
     useEffect(() => {
 
-        fetch('/api/productos')
+        fetch(`${import.meta.env.VITE_API_URL}/api/productos`)
             .then(res => res.json())
             .then(datos => setProductos(datos))
             .catch(error => console.log(error));
 
-        fetch('/api/formulario', {
+        fetch(`${import.meta.env.VITE_API_URL}/api/formulario`, {   
             credentials: 'include'
         })
             .then(res => res.ok ? res.json() : [])

@@ -15,7 +15,7 @@ function RutaProtegida() {
     const [autorizado, setAutorizado] = useState(null);
 
     useEffect(() => {
-        fetch('/api/verificar-sesion', {
+        fetch(`${import.meta.env.VITE_API_URL}/api/verificar-sesion`, {
             credentials: 'include'
         })
         .then(res => setAutorizado(res.ok))

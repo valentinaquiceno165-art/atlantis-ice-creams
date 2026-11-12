@@ -10,7 +10,7 @@ function PanelAdmin() {
 
     const cerrarSesion = async () => {
         try {
-            await fetch('/api/logout', {
+            await fetch(`${import.meta.env.VITE_API_URL}/api/logout`, {
                 method: 'POST',
                 credentials: 'include',
             });
