@@ -11,8 +11,21 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const app = express();
+// Orígenes permitidos: FRONTEND_URL (admite varios separados por comas) + localhost para dev/preview
+const origenesPermitidos = [
+    ...(process.env.FRONTEND_URL ? process.env.FRONTEND_URL.split(',').map((o) => o.trim()) : []),
+    'http://localhost:5173',
+    'http://localhost:4173',
+];
+
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    origin: (origin, callback) => {
+        // Sin origen (curl, Postman) o dentro de la lista permitida
+        if (!origin || origenesPermitidos.includes(origin)) {
+            return callback(null, true);
+        }
+        return callback(new Error('Origen no autorizado por CORS'));
+    },
     credentials: true,
 }));
 app.use(express.json());
